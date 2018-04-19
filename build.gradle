@@ -10,6 +10,7 @@ buildscript {
 	}
 	dependencies {
 		classpath "com.github.jengelman.gradle.plugins:shadow:2.0.3"
+		classpath "mysql:mysql-connector-java:5.1.16"
 	}
 }
 

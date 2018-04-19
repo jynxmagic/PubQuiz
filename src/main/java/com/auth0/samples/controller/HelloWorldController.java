@@ -4,13 +4,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.auth0.samples.classes.Api;
+
 @RestController
-@RequestMapping("hello")
+@RequestMapping("/generateQuestions")
 public class HelloWorldController
 {
 	@GetMapping
 	public String sayHello()
 	{
-		return "Hello World";
+		Api api = new Api();
+		
+		ArrayList questions = api.generateQuestions();
+		
+		return questions;
 	}
 }

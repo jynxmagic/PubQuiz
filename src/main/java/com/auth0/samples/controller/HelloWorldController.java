@@ -13,11 +13,11 @@ import com.auth0.samples.classes.Api;
 public class HelloWorldController
 {
 	@GetMapping
-	public ArrayList sayHello()
+	public String sayHello()
 	{
 		Api api = new Api();
 		
-		ArrayList questions = api.generateQuestions();
+		String questions = api.generateQuestions();
 		
 		return questions;
 	}

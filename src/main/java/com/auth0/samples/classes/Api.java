@@ -1,6 +1,7 @@
 package com.auth0.samples.classes;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,23 +12,20 @@ public class Api {
 	protected final String sessionToken = "64808f9f8aa181ba1f3a765226c0f175e3ca46fdc2208df7c6e690f3440fbde4";
 	
 	
-	public ArrayList generateQuestions()
+	public String generateQuestions()
 	{
-        ArrayList questions = new ArrayList();
-
+        String questions = new String();
+       
+        
 		try
 		{
 	        URL questionUrl = new URL("https://opentdb.com/api.php?amount=1&token=\"+sessionToken");
-	        URLConnection yc = questionUrl.openConnection();
-	        BufferedReader in = new BufferedReader(
-	                                new InputStreamReader(
-	                                yc.getInputStream()));
-	        String inputLine;
+	        URLConnection questionConnection = questionUrl.openConnection();
 	        
-	
-	        while ((inputLine = in.readLine()) != null) 
-	        		questions.add(inputLine);
-	        in.close();
+	        questionConnection.setDoOutput(true);
+	        Scanner scanner = new Scanner(questionUrl.openStream());
+	        questions = scanner.useDelimiter("\\Z").next();
+	        scanner.close();	        
 		}
 		catch(Exception ex)
 		{

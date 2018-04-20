@@ -13,19 +13,26 @@ public class Api {
 	
 	public ArrayList generateQuestions()
 	{
-        URL questionUrl = new URL("https://opentdb.com/api.php?amount=1&token=\"+sessionToken");
-        URLConnection yc = questionUrl.openConnection();
-        BufferedReader in = new BufferedReader(
-                                new InputStreamReader(
-                                yc.getInputStream()));
-        String inputLine;
-        
         ArrayList questions = new ArrayList();
 
-        while ((inputLine = in.readLine()) != null) 
-        		questions.add(inputLine);
-        in.close();
-        
+		try
+		{
+	        URL questionUrl = new URL("https://opentdb.com/api.php?amount=1&token=\"+sessionToken");
+	        URLConnection yc = questionUrl.openConnection();
+	        BufferedReader in = new BufferedReader(
+	                                new InputStreamReader(
+	                                yc.getInputStream()));
+	        String inputLine;
+	        
+	
+	        while ((inputLine = in.readLine()) != null) 
+	        		questions.add(inputLine);
+	        in.close();
+		}
+		catch(Exception ex)
+		{
+			
+		}
         return questions;
 	}
 }

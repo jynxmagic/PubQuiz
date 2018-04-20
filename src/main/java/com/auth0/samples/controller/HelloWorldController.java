@@ -1,5 +1,7 @@
 package com.auth0.samples.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,7 +13,7 @@ import com.auth0.samples.classes.Api;
 public class HelloWorldController
 {
 	@GetMapping
-	public String sayHello()
+	public ArrayList sayHello()
 	{
 		Api api = new Api();
 		

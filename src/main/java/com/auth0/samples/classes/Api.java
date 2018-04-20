@@ -7,10 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-public class Api {
-	
-	protected final String sessionToken = "64808f9f8aa181ba1f3a765226c0f175e3ca46fdc2208df7c6e690f3440fbde4";
-	
+public class Api {	
 	
 	public String generateQuestions()
 	{
@@ -19,7 +16,7 @@ public class Api {
         
 		try
 		{
-	        URL questionUrl = new URL("https://opentdb.com/api.php?amount=1&token=\"+sessionToken");
+	        URL questionUrl = new URL("https://opentdb.com/api.php?amount=10");
 	        URLConnection questionConnection = questionUrl.openConnection();
 	        
 	        questionConnection.setDoOutput(true);

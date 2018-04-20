@@ -23,7 +23,7 @@ public class Api {
         ArrayList questions = new ArrayList();
 
         while ((inputLine = in.readLine()) != null) 
-        		questions.add(inputLine)
+        		questions.add(inputLine);
         in.close();
         
         return questions;

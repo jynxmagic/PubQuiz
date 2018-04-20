@@ -18,7 +18,6 @@ buildscript {
 apply plugin: "java"
 apply plugin: "application"
 apply plugin: "com.github.johnrengelman.shadow"
-apply plugin: "com.mysql.jdbc.Driver"
 
 mainClassName = 'com.auth0.samples.Main'
 

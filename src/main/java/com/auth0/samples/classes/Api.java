@@ -1,19 +1,20 @@
 package com.auth0.samples.classes;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import org.json.JSONObject;
+import org.json.JSONArray;
 
 public class Api {	
 
-	public JSONObject generateQuestions()
+	public List<Object> generateQuestions()
 	{
-		JSONObject json = new JSONObject();
+		JSONArray response = new JSONArray();
 
 		try
 		{
@@ -22,14 +23,16 @@ public class Api {
 
 			questionConnection.setDoOutput(true);
 			Scanner scanner = new Scanner(questionUrl.openStream());
-			String questions = scanner.useDelimiter("\\Z").next();
-			json = new JSONObject(questions);
+			response = scanner.useDelimiter("\\Z").next();
 			scanner.close();	        
 		}
 		catch(Exception ex)
 		{
 
 		}
-		return json;
+		
+		List<Object> dataSet = response.toList();
+		
+		return dataSet;
 	}
 }

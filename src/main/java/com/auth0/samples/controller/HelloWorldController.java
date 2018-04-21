@@ -21,6 +21,6 @@ public class HelloWorldController
 		
 		Map<String, Object> questions = api.generateQuestions();
 		
-		return questions.toString();;
+		return questions.toString();
 	}
 }

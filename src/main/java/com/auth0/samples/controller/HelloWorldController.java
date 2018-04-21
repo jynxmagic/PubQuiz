@@ -11,16 +11,22 @@ import com.auth0.samples.classes.Api;
 
 
 @RestController
-@RequestMapping("/generateQuestions")
+@RequestMapping("/")
 public class HelloWorldController
 {
-	@GetMapping
-	public String sayHello()
+	@RequestMapping("/generateQuestions")
+	public String generateQUestions()
 	{
 		Api api = new Api();
 		
 		String questions = api.generateQuestions();
 		
 		return questions;
+	}
+	
+	@RequestMapping("/")
+	public String index()
+	{
+		return "hello";
 	}
 }

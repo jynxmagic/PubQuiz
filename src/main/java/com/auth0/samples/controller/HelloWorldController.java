@@ -1,17 +1,17 @@
 package com.auth0.samples.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.auth0.samples.classes.Api;
 
 
-@RestController
-@RequestMapping("/")
+@Controller
 public class HelloWorldController
 {
 	@RequestMapping("/generateQuestions")
@@ -24,9 +24,12 @@ public class HelloWorldController
 		return questions;
 	}
 	
-	@RequestMapping("/")
-	public String index()
+	@GetMapping("/hello")
+	public String index(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model)
 	{
+		
+		model.addAttribute("name", name);
+		
 		return "hello";
 	}
 }

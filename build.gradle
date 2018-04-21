@@ -11,13 +11,15 @@ buildscript {
 	dependencies {
 		classpath "com.github.jengelman.gradle.plugins:shadow:2.0.3"
 		classpath "mysql:mysql-connector-java:5.1.16"
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:2.0.1.RELEASE"
 	}
 }
 
-
 apply plugin: "java"
 apply plugin: "application"
+apply plugin: 'io.spring.dependency-management'
 apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: 'org.springframework.boot'
 
 mainClassName = 'com.auth0.samples.Main'
 
@@ -26,7 +28,8 @@ shadowJar
 	mergeServiceFiles()
 }
 
-dependencies {
+dependencies {	
+		compile("org.springframework.boot:spring-boot-starter-web")
 		compile group: 'org.json', name: 'json', version: '20180130'
 	    compile('org.apache.tomcat.embed:tomcat-embed-jasper:8.0.47')
 		compile('org.springframework:spring-webmvc:5.0.1.RELEASE')

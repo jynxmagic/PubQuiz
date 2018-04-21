@@ -19,8 +19,8 @@ public class HelloWorldController
 	{
 		Api api = new Api();
 		
-		Map<String, Object> questions = api.generateQuestions();
+		String questions = api.generateQuestions();
 		
-		return questions.toString();
+		return questions;
 	}
 }

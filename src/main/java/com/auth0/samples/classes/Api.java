@@ -13,9 +13,9 @@ import org.json.JSONObject;
 
 public class Api {	
 
-	public Map<String, Object> generateQuestions()
+	public String generateQuestions()
 	{
-		JSONObject response = new JSONObject();
+		String response = new String("0");
 
 		try
 		{
@@ -24,7 +24,7 @@ public class Api {
 
 			questionConnection.setDoOutput(true);
 			Scanner scanner = new Scanner(questionUrl.openStream());
-			response = new JSONObject(scanner.useDelimiter("\\Z").next());
+			response = new String(scanner.useDelimiter("\\Z").next());
 			scanner.close();	        
 		}
 		catch(Exception ex)
@@ -32,8 +32,7 @@ public class Api {
 
 		}
 		
-		Map<String, Object> dataSet = response.toMap();
 		
-		return dataSet;
+		return response;
 	}
 }

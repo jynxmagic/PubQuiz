@@ -11,9 +11,8 @@ import org.json.JSONObject;
 
 public class Api {	
 
-	public String generateQuestions()
+	public JSONObject generateQuestions()
 	{
-		String questions = new String();
 		JSONObject json = new JSONObject();
 
 		try
@@ -23,13 +22,14 @@ public class Api {
 
 			questionConnection.setDoOutput(true);
 			Scanner scanner = new Scanner(questionUrl.openStream());
-			questions = scanner.useDelimiter("\\Z").next();
+			String questions = scanner.useDelimiter("\\Z").next();
+			json = new JSONObject(questions);
 			scanner.close();	        
 		}
 		catch(Exception ex)
 		{
 
 		}
-		return questions;
+		return json;
 	}
 }

@@ -1,70 +1,112 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Gradle + Spring MVC</title>
 
-<spring:url value="/resources/core/css/hello.css" var="coreCss" />
-<spring:url value="/resources/core/css/bootstrap.min.css" var="bootstrapCss" />
-<link href="${bootstrapCss}" rel="stylesheet" />
-<link href="${coreCss}" rel="stylesheet" />
-</head>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Project Name</a>
-		</div>
-	</div>
-</nav>
+  <head>
 
-<div class="jumbotron">
-	<div class="container">
-		<h1>Hello World</h1>
-			<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-		</p>
-	</div>
-</div>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<div class="container">
+    <title>New Age - Start Bootstrap Theme</title>
+    
+    
 
-	<div class="row">
-		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>ABC</p>
-			<p>
-				<a class="btn btn-default" href="#" role="button">View details</a>
-			</p>
-		</div>
-		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>ABC</p>
-			<p>
-				<a class="btn btn-default" href="#" role="button">View details</a>
-			</p>
-		</div>
-		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>ABC</p>
-			<p>
-				<a class="btn btn-default" href="#" role="button">View details</a>
-			</p>
-		</div>
-	</div>
+    <!-- Bootstrap core CSS -->
+	<link href="/resources/core/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/resources/core/css/hello.css" rel="stylesheet" />
+	<link href="/resources/core/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="/resources/core/css/simple-line-icons.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+    <!-- Plugin CSS -->
+    <link href="/resources/core/css/device-mockups.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+        <link href="/resources/core/css/new-age.min.css" rel="stylesheet" />
+    
+  </head>
+
+  <body id="page-top">
+
+    <header class="masthead">
+      <div class="container h-100" style="width: auto">
+      	<div class="row h-100  justify-content-center align-items-center">
+          <div class="col-12" style="text-align: center; line-height: 100vh">
+              			<a href="#download" id="download" class="btn btn-outline btn-xl js-scroll-trigger">Generate Quiz</a>
+          </div>
+         </div>
+     </div>
+    </header>
+
+    <section class="download bg-primary text-center" id="download">
+      <div class="container" style="width: auto">
+        <div class="row">
+          <div class="col-md-8 mx-auto" style="padding: 10px">
+            <h2 class="section-heading">Here is you quiz!</h2>
+            <ul id="questions">
+            
+            </ul>
+            <div class="badges">
+              <a class="badge-link" href="#"><img src="img/google-play-badge.svg" alt=""></a>
+              <a class="badge-link" href="#"><img src="img/app-store-badge.svg" alt=""></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container" style="width: auto;">
+        <p>&copy; Your Website 2018. All Rights Reserved.</p>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <a href="#">Privacy</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">Terms</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">test</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    
 
 
-	<hr>
-	<footer>
-		<p>&copy; Mkyong.com 2015</p>
-	</footer>
-</div>
+    <script src="/resources/core/js/jquery.min.js"> </script>
+      
+     <script>
+     $(document).ready(function(){
+	     $('#download').click(function(){
+	    	 $.ajax({url: window.location+"/generate/generateQuestions", success: function(result){
+	    		 	 data = jQuery.parseJSON(result);
+	    		 	 questions = data.results;
+	    		 	 
+	    		 	 console.log(questions);
+	    		 	 
+	    		 	 var i;
+	    		 	 for(i = 0; i <= questions.length; i++)
+	    		 	 {
+	    		 		$("#questions").append('<li>Question '+i+1+': <span style="font-weight: bold">'+questions[i].question+'</span> <br> '+questions[i].correct_answer+'</li>');
+	    		     }
+	    		 }})
+	    	 });
+     });
+    </script>
+    
+    <script src="/resources/core/js/bootstrap.bundle.min.js"></script>
 
-<spring:url value="/resources/core/css/hello.js" var="coreJs" />
-<spring:url value="/resources/core/css/bootstrap.min.js" var="bootstrapJs" />
+    <!-- Plugin JavaScript -->
+    <script src="/resources/core/js/jquery.easing.min.js"></script>
+    <!-- Custom scripts for this template -->
+    <script src="/resources/core/js/new-age-min.js"></script>
 
-<script src="${coreJs}"></script>
-<script src="${bootstrapJs}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  </body>
 
-</body>
 </html>

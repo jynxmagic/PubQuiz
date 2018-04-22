@@ -22,7 +22,7 @@ public class Api {
 
 		try
 		{
-			URL questionUrl = new URL("https://opentdb.com/api.php?amount=10");
+			URL questionUrl = new URL("https://opentdb.com/api.php?amount=40");
 			URLConnection questionConnection = questionUrl.openConnection();
 
 			questionConnection.setDoOutput(true);

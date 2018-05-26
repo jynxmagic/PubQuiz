@@ -36,17 +36,17 @@
       <div class="container h-100" style="width: auto">
       	<div class="row h-100  justify-content-center align-items-center">
           <div class="col-12" style="text-align: center; line-height: 100vh">
-              			<a href="#download" id="download" class="btn btn-outline btn-xl js-scroll-trigger">Generate Quiz</a>
+              			<a href="#questions" id="download" class="btn btn-outline btn-xl js-scroll-trigger">Generate Quiz</a>
           </div>
          </div>
      </div>
     </header>
 
-    <section class="download bg-primary text-center" id="download">
+    <section class="download bg-primary text-center">
       <div class="container" style="width: auto">
         <div class="row">
           <div class="col-md-8 mx-auto" style="padding: 10px">
-            <h2 class="section-heading">Here is you quiz!</h2>
+            <h2 class="section-heading">Here is your quiz!</h2>
             <ul id="questions">
             
             </ul>
@@ -93,10 +93,50 @@
 	    		 	 var i;
 	    		 	 for(i = 0; i <= questions.length; i++)
 	    		 	 {
-	    		 		$("#questions").append('<li>Question '+i+1+': <span style="font-weight: bold">'+questions[i].question+'</span> <br> '+questions[i].correct_answer+'</li>');
+	    		 		 var question;
+	    		 		 
+	    		 		 if(questions[i].type == "multiple")
+	    		 		 {
+	    		 			var multiple_choice = array();
+	    		 			
+	    		 			var x;
+	    		 			
+	    		 			for(x = 0; x <= questions[i].incorrect_answers.length; x++)
+	    		 			{
+	    		 				multiple_choice.push(questions[i].incorrect_answers[x]);
+	    		 			}
+	    		 			
+	    		 			multiple_choice.push(questions[i].correct_answer);
+	    		 			
+	    		 			multiple_choice = shuffle(multiple_choice);
+	    		 			
+	    		 			question = questions[i].question;
+	    		 			
+	    		 			multiple_choice.forEach(function(element)
+							{
+	    		 				question = question + " " + element;
+	    		 			});
+
+	    		 		 }
+	    		 		 else	 
+	    		 		 {
+	    		 			question =  questions[i].question;
+	    		 		 }
+	    		 		$("#questions").append('<li>Question '+(i)+': <span style="font-weight: bold">'+question+'</span> <br> '+questions[i].correct_answer+'</li>');
 	    		     }
 	    		 }})
 	    	 });
+
+	     function shuffle(a) {
+	         var j, x, i;
+	         for (i = a.length - 1; i > 0; i--) {
+	             j = Math.floor(Math.random() * (i + 1));
+	             x = a[i];
+	             a[i] = a[j];
+	             a[j] = x;
+	         }
+	         return a;
+	     };
      });
     </script>
     

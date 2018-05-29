@@ -81,64 +81,7 @@
 
     <script src="/resources/core/js/jquery.min.js"> </script>
       
-     <script>
-     $(document).ready(function(){
-	     $('#download').click(function(){
-	    	 $.ajax({url: window.location+"/generate/generateQuestions", success: function(result){
-	    		 	 data = jQuery.parseJSON(result);
-	    		 	 questions = data.results;
-	    		 	 
-	    		 	 console.log(questions);
-	    		 	 
-	    		 	 var i;
-	    		 	 for(i = 0; i <= questions.length; i++)
-	    		 	 {
-	    		 		 var question;
-	    		 		 
-	    		 		 if(questions[i].type == "multiple")
-	    		 		 {
-	    		 			var multiple_choice = new Array();
-	    		 			
-	    		 			var x;
-	    		 			
-	    		 			for(x = 0; x <= questions[i].incorrect_answers.length; x++)
-	    		 			{
-	    		 				multiple_choice.push(questions[i].incorrect_answers[x]);
-	    		 			}
-	    		 			
-	    		 			multiple_choice.push(questions[i].correct_answer);
-	    		 			
-	    		 			multiple_choice = shuffle(multiple_choice);
-	    		 			
-	    		 			question = questions[i].question;
-	    		 			
-	    		 			multiple_choice.forEach(function(element)
-							{
-	    		 				question = question + " " + element;
-	    		 			});
-
-	    		 		 }
-	    		 		 else	 
-	    		 		 {
-	    		 			question =  questions[i].question;
-	    		 		 }
-	    		 		$("#questions").append('<li>Question '+(i)+': <span style="font-weight: bold">'+question+'</span> <br> '+questions[i].correct_answer+'</li>');
-	    		     }
-	    		 }})
-	    	 });
-
-	     function shuffle(a) {
-	         var j, x, i;
-	         for (i = a.length - 1; i > 0; i--) {
-	             j = Math.floor(Math.random() * (i + 1));
-	             x = a[i];
-	             a[i] = a[j];
-	             a[j] = x;
-	         }
-	         return a;
-	     };
-     });
-    </script>
+	<script src="/resources/core/js/download_questions.js"> </script>
     
     <script src="/resources/core/js/bootstrap.bundle.min.js"></script>
 

@@ -97,7 +97,7 @@
 	    		 		 
 	    		 		 if(questions[i].type == "multiple")
 	    		 		 {
-	    		 			var multiple_choice = array();
+	    		 			var multiple_choice = new Array();
 	    		 			
 	    		 			var x;
 	    		 			

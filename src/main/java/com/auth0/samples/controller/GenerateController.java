@@ -1,5 +1,6 @@
 package com.auth0.samples.controller;
 
+import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

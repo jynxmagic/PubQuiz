@@ -7,9 +7,9 @@
     		 	 console.log(questions);
     		 	 
     		 	 var i;
-    		 	 for(i = 0; i <= questions.length; i++)
+    		 	 for(i = 0; i <= 40; i++)
     		 	 {
-    		 		$("#questions").append('<li>Question '+(i)+': <span style="font-weight: bold">'+questions[i].question+'</span> <br> '+questions[i].correct_answer+'</li>');
+    		 		$("#questions").append('<li>Question '+(i)+': <span style="font-weight: bold">'+questions[0][i][0].question+'</span> <br> '+questions[0][i][0].correct_answer+'</li>');
     		     }
     		 }})
     	 });
